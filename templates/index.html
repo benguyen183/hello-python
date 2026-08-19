@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy Tính</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f2f5;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            width: 320px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #333;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #0070f3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        button:hover { background: #0051cc; }
+        .result {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #0070f3;
+            margin-top: 20px;
+        }
+        .error {
+            text-align: center;
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Máy Tính</h1>
+        <form method="POST">
+            <input type="number" name="a" placeholder="Số thứ nhất" step="any" required>
+            <select name="op">
+                <option value="+">+ Cộng</option>
+                <option value="-">- Trừ</option>
+                <option value="*">× Nhân</option>
+                <option value="/">/  Chia</option>
+            </select>
+            <input type="number" name="b" placeholder="Số thứ hai" step="any" required>
+            <button type="submit">Tính</button>
+        </form>
+
+        {% if result is not none %}
+            <div class="result">= {{ result }}</div>
+        {% endif %}
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
